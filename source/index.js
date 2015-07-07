@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('twitterCloud', []);
+var app = angular.module('twitterCloud', ['ui.router']);
 
-app.controller('MainCtrl', function($scope) {
-  $scope.testData = {
+app.controller('MainCtrl', function($scope, $state) {
+  $scope.tags = {
     "#Angularjs": 40,
     "#Emberjs": 20,
     "#JavaScript": 80,
