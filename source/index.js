@@ -2,16 +2,8 @@
 
 var app = angular.module('twitterCloud', ['ui.router']);
 
-app.controller('MainCtrl', function($scope, $state) {
-  $scope.tags = {
-    "#Angularjs": 40,
-    "#Emberjs": 20,
-    "#JavaScript": 80,
-    "#Reactjs": 10,
-    "#Backbone": 10,
-    "#MeanStack": 20,
-    "#Nodejs": 25,
-    "#Mongodb": 15,
-    "#Expressjs": 5
-  };
+app.controller('MainCtrl', function($scope, $state, $http) {
+  $http.get('http://localhost:8001/search').success(function(data) {
+    $scope.tags = data;
+  })
 });
