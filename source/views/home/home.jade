@@ -2,9 +2,9 @@
 
   h1.text-center #Cloud
 
-  form
+  form(ng-submit="search()")
     .input-group
-      input.form-control(placeholder="List of #words")
+      input.form-control(placeholder="List of #words" ng-model="words")
       .input-group-btn
         button.btn.btn-default(type="submit") Go
 
