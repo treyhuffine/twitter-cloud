@@ -6,8 +6,10 @@ app.controller('MainCtrl', function($scope, $state, $http) {
   $scope.tags = [];
   $scope.tweet = "";
   $scope.search = function() {
+    console.log($scope.words);
     $http.post('http://localhost:8001/search', { words: $scope.words })
     .success(function(data) {
+      console.log(data);
       $scope.tags = data;
     })
     .catch(function(error) {
