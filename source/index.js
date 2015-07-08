@@ -9,6 +9,9 @@ app.controller('MainCtrl', function($scope, $state, $http) {
     $http.post('http://localhost:8001/search', { words: $scope.words })
     .success(function(data) {
       $scope.tags = data;
+    })
+    .catch(function(error) {
+      console.log(error);
     });
   };
   $scope.sendTweet = function() {
