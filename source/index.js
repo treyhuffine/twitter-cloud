@@ -10,11 +10,13 @@ app.controller('MainCtrl', function($scope, $state, $http) {
     $http.post('http://localhost:8001/search', { words: $scope.words })
     .success(function(data) {
       console.log(data);
-      $scope.tags = data;
+      $scope.data = data;
     })
     .catch(function(error) {
       console.log(error);
     });
+
+    return false;
   };
   $scope.sendTweet = function() {
     $http.post('http://localhost:8001/sendtweet', {tweet: $scope.tweet})
