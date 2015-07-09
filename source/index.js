@@ -2,7 +2,23 @@
 
 var app = angular.module('twitterCloud', ['ui.router', 'firebase']);
 
-app.controller('MainCtrl', function($scope, $state, $http, urls, TweetService) {
+app
+.filter('friendsFilter', function() {
+  return function(users, showFriends) {
+    if (showFriends) {
+      return users;
+    }
+
+    var filteredUsers = {};
+    angular.forEach(users, function(userData, screenName) {
+      if(!userData.following) {
+        filteredUsers[screenName] = userData;
+      }
+    });
+    return filteredUsers;
+  };
+})
+.controller('MainCtrl', function($scope, $state, $http, urls, TweetService) {
   $scope.tags = [];
   $scope.tweet = "";
 

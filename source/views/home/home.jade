@@ -14,21 +14,24 @@
         span(ng-click="includeInTweet(tag)") {{tag}}
   
   #tweeters
-  .media(ng-repeat="(screenName, userData) in data.users track by $index")
-    .media-left
-      a(target="_blank", href="http://twitter.com/{{userData.screen_name}}")
-        img.media-object(ng-src="{{userData.profile_image_url}}")
-    .media-body
-      button.btn.btn-info.btn-xs.pull-right(ng-click="followUser(screenName)" ng-hide="userData.following") Follow
-      button.btn.btn-success.btn-xs.pull-right(disabled=true ng-show="userData.following") Following
-      h4.media-heading {{userData.name}}
-      .counts
-         span.username
-           strong @{{userData.screen_name}}
-         span.friends {{userData.friends_count}} Friends
-         span.followers {{userData.followers_count}} Followers
-         span.tweets {{userData.statuses_count}} Tweets
-      .description {{userData.description}}
+    .checkbox(ng-show="data.users"): label
+      input(type="checkbox", ng-model="showFriends")
+      | Show Friends
+    .media(ng-repeat="(screenName, userData) in data.users | friendsFilter : showFriends")
+      .media-left
+        a(target="_blank", href="http://twitter.com/{{userData.screen_name}}")
+          img.media-object(ng-src="{{userData.profile_image_url}}")
+      .media-body
+        button.btn.btn-info.btn-xs.pull-right(ng-click="followUser(screenName)" ng-hide="userData.following") Follow
+        button.btn.btn-success.btn-xs.pull-right(disabled=true ng-show="userData.following") Following
+        h4.media-heading {{userData.name}}
+        .counts
+           span.username
+             strong @{{userData.screen_name}}
+           span.friends {{userData.friends_count}} Friends
+           span.followers {{userData.followers_count}} Followers
+           span.tweets {{userData.statuses_count}} Tweets
+        .description {{userData.description}}
 
   hr
   form.form-inline
