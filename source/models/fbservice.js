@@ -1,11 +1,9 @@
 app
 .service('FBService', function($window, $firebaseAuth, urls){
   var fb = this;
-  console.log("service");
   this.db = new Firebase(urls.firebaseUrl);
 
   this.db.onAuth(function(authData) {
-    console.log(authData);
     if (authData) {
       fb.currentUser = authData.twitter;
     }
