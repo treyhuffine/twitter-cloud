@@ -16,6 +16,8 @@ app.controller('MainCtrl', function($scope, $state, TweetService) {
       .catch(function(error) {
         console.log(error);
       });
+
+    return false;
   };
   $scope.sendTweet = function() {
     TweetService.sendTweet($scope.tweet)
