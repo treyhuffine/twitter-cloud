@@ -9,4 +9,5 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
       a.navbar-brand(ui-sref='home') #Cloud
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li: a(ui-sref='home'): i.glyphicon.glyphicon-home &nbsp;Home
+        li(style="cursor: pointer;"): a(src="" ng-click="login()"): i.glyphicon.glyphicon-log-in &nbsp;Login
+        li(style="cursor: pointer;"): a(src="" ng-click="logout()"): i.glyphicon.glyphicon-log-out &nbsp;Logout

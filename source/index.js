@@ -1,13 +1,13 @@
 'use strict';
 
-var app = angular.module('twitterCloud', ['ui.router']);
+var app = angular.module('twitterCloud', ['ui.router', 'firebase']);
 
-app.controller('MainCtrl', function($scope, $state, $http) {
+app.controller('MainCtrl', function($scope, $state, $http, urls) {
   $scope.tags = [];
   $scope.tweet = "";
   $scope.search = function() {
     console.log($scope.words);
-    $http.post('http://localhost:8001/search', { words: $scope.words })
+    $http.post(urls.apiUrl + '/search', { words: $scope.words })
     .success(function(data) {
       console.log(data);
       $scope.data = data;
@@ -19,7 +19,7 @@ app.controller('MainCtrl', function($scope, $state, $http) {
     return false;
   };
   $scope.sendTweet = function() {
-    $http.post('http://localhost:8001/sendtweet', {tweet: $scope.tweet})
+    $http.post(urls.apiUrl + '/sendtweet', {tweet: $scope.tweet})
       .success(function(data) {
         console.log(data);
         $scope.tweet = "";

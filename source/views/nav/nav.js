@@ -1,5 +1,9 @@
-'use strict';
+app
+.controller('NavCtrl', function($scope, FBService) {
+  console.log("nav loaded");
 
-angular.module('twitterCloud')
-.controller('NavCtrl', function(){
+  $scope.login = FBService.twitterLogin;
+  $scope.logout = FBService.twitterLogout;
+
+  $scope.currentUser = FBService.currentUser;
 });

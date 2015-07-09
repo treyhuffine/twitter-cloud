@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('twitterCloud')
+app
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
 
