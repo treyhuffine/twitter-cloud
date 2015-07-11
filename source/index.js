@@ -22,6 +22,11 @@ app
   $scope.tags = [];
   $scope.tweet = "";
 
+  $scope.btnStyle = function(ratio) {
+    var greenScale = Math.floor(125 * ratio);
+    return { 'background-color': 'rgb(0,' + greenScale + ',0)' };
+  };
+
   $scope.search = function() {
     console.log($scope.words);
     TweetService.search($scope.words)
